@@ -86,7 +86,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ),
             ),
             Widgets().loginEmailTextField(emailController: emailController),
-            Widgets().loginPassWordTextField(emailController: passwordController),
+            Widgets().loginPassWordTextField(passwordController: passwordController),
             SizedBox(height: getWidgetHeight(height: 20)),
             InkWell(
               splashFactory: NoSplash.splashFactory,

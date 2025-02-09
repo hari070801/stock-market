@@ -15,11 +15,17 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  final TextEditingController _searchController = TextEditingController();
+  late TextEditingController searchController;
+
+  @override
+  void initState() {
+    super.initState();
+    searchController = TextEditingController();
+  }
 
   @override
   void dispose() {
-    _searchController.dispose();
+    searchController.dispose();
     super.dispose();
   }
 
@@ -51,7 +57,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         child: Column(
           children: [
             TextField(
-              controller: _searchController,
+              controller: searchController,
               style: TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: getTextSize(fontSize: 20),
@@ -96,7 +102,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             Expanded(
               child: searchState.when(
                   data: (stocks) {
-                    if (stocks.isEmpty && _searchController.text.isEmpty) {
+                    if (searchController.text.isEmpty) {
                       return Center(
                         child: Text(
                           "Start searching for stocks to see results.",
@@ -106,7 +112,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           ),
                         ),
                       );
-                    } else if (stocks.isEmpty && _searchController.text.isNotEmpty) {
+                    } else if (stocks.isEmpty && searchController.text.isNotEmpty) {
                       return Center(
                         child: Text(
                           "We couldn't find any stocks matching your search.",

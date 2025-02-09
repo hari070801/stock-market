@@ -204,7 +204,7 @@ class _StockGraphScreenState extends ConsumerState<StockGraphScreen> {
               SizedBox(height: getWidgetHeight(height: 50)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: ["1W", "1M", "1Y"].asMap().entries.map((entry) {
+                children: ["1D", "1W", "1M", "1Y", "5Y"].asMap().entries.map((entry) {
                   final index = entry.key;
                   final range = entry.value;
 
@@ -216,7 +216,7 @@ class _StockGraphScreenState extends ConsumerState<StockGraphScreen> {
                           changeRange(selectedRange);
                         },
                         child: Container(
-                          padding: EdgeInsets.symmetric(vertical: getWidgetHeight(height: 8), horizontal: getWidgetWidth(width: 16)),
+                          padding: EdgeInsets.symmetric(vertical: getWidgetHeight(height: 4), horizontal: getWidgetWidth(width: 16)),
                           decoration: BoxDecoration(
                             color: selectedRange == range ? Colors.white : Colors.black,
                             borderRadius: BorderRadius.circular(20),
@@ -230,10 +230,10 @@ class _StockGraphScreenState extends ConsumerState<StockGraphScreen> {
                           ),
                         ),
                       ),
-                      if (index < 2)
+                      if (index < 4)
                         Container(
                           width: 2,
-                          height: getWidgetHeight(height: 20),
+                          height: getWidgetHeight(height: 24),
                           color: Colors.grey.withOpacity(0.5),
                           margin: EdgeInsets.symmetric(horizontal: getWidgetWidth(width: 8)),
                         ),

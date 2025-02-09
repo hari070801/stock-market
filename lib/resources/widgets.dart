@@ -46,7 +46,9 @@ class Widgets {
     );
   }
 
-  loginPassWordTextField({required TextEditingController emailController}) {
+  Widget loginPassWordTextField({required TextEditingController passwordController}) {
+    ValueNotifier<bool> isObscure = ValueNotifier<bool>(true);
+
     return Padding(
       padding: EdgeInsets.only(
         top: getWidgetHeight(height: 20),
@@ -54,37 +56,52 @@ class Widgets {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TextFormField(
-            controller: emailController,
-            style: TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: getTextSize(fontSize: 20),
-              color: appColors.fontColor,
-            ),
-            keyboardType: TextInputType.text,
-            obscureText: true,
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.grey.shade200,
-              hintText: 'Password',
-              hintStyle: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: getTextSize(fontSize: 20),
-                color: appColors.darkGrey,
-              ),
-              counterText: '',
-              prefixIconConstraints: BoxConstraints(
-                maxHeight: getWidgetHeight(height: 50),
-              ),
-              contentPadding: EdgeInsets.symmetric(horizontal: getWidgetWidth(width: 15)),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-            ),
-          )
+          ValueListenableBuilder<bool>(
+            valueListenable: isObscure,
+            builder: (context, obscure, child) {
+              return TextFormField(
+                controller: passwordController,
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: getTextSize(fontSize: 20),
+                  color: appColors.fontColor,
+                ),
+                keyboardType: TextInputType.text,
+                obscureText: obscure,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.grey.shade200,
+                  hintText: 'Password',
+                  hintStyle: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: getTextSize(fontSize: 20),
+                    color: appColors.darkGrey,
+                  ),
+                  counterText: '',
+                  prefixIconConstraints: BoxConstraints(
+                    maxHeight: getWidgetHeight(height: 50),
+                  ),
+                  contentPadding: EdgeInsets.symmetric(horizontal: getWidgetWidth(width: 15)),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      obscure ? Icons.visibility_off_rounded : Icons.visibility_rounded,
+                      color: appColors.darkGrey,
+                      size: 22,
+                    ),
+                    onPressed: () {
+                      isObscure.value = !isObscure.value;
+                    },
+                  ),
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
