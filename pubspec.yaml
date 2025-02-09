@@ -41,7 +41,6 @@ dependencies:
   another_flushbar: ^1.12.30
   cached_network_image: ^3.4.1
   fl_chart: ^0.69.2
-  intl: ^0.20.2
   connectivity_plus: 5.0.1
 
 dev_dependencies:
