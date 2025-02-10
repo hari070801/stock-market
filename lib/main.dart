@@ -78,7 +78,7 @@ class _MyAppState extends ConsumerState<MyApp> {
         final MediaQueryData data = MediaQuery.of(context);
         double scale = (data.devicePixelRatio < 3.0) ? 0.93 : 0.95;
 
-        print("data.size.height (builder): ${data.size.height}");
+        print("data.size.height : ${data.size.height}");
 
         if (data.size.height <= 568.0) {
           scale = 0.75;

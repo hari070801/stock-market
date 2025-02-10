@@ -32,7 +32,7 @@ class LoginNotifier extends StateNotifier<LoginState> {
       if (result is LoginModel) {
         state = LoginSuccess(token: result.jwt);
       } else if (result is LoginFailureModel) {
-        print("login failureeeeeeeeeeeeeeee");
+        print("login failure");
         state = LoginFailure(message: result.error.message);
       }
     } catch (error) {
