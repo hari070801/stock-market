@@ -2,7 +2,7 @@
 
 # Description
 
-# A Flutter application that allows users to search for stock market data, view stock details, and visualize stock price graphs using provided APIs.
+A Flutter application that allows users to search for stock market data, view stock details, and visualize stock price graphs using provided APIs.
 
 ## Features
 
